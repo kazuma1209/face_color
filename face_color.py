@@ -42,13 +42,13 @@ files.sort()
 images = [cv2.imread(files[i]) for i in range(len(files))]
 images_green = [pd.DataFrame(images[j][:,:,1]) for j in range(len(images))]
 
-#parameter
-in1 = 700
-in2 = 750
-co1 = 300
-co2 = 320
+#parameter(顔のおでこの座標)
+in1 = 658
+in2 = 707
+co1 = 124
+co2 = 158
 
-#メディアンフィルタによる平滑化
+#メディアンフィルタによる平滑化（iloc[行番号x,列番号y]）
 images_green_median = [cv2.medianBlur(images_green[i].iloc[ in1 : in2 , co1 :co2 ].values,ksize=5)  for i in range(len(images_green))]
 
 #平均値を算出
